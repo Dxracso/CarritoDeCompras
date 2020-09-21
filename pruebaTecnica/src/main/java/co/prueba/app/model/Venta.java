@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+
 @Entity
 public class Venta implements Serializable {
 	private static final long serialVersionUID = 4845879058174609347L;

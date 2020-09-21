@@ -16,9 +16,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
 import co.prueba.app.ManejadorErrores;
+import co.prueba.app.model.CompletadoGenerico;
+import co.prueba.app.model.DetalleVenta;
 import co.prueba.app.model.ErrorGenerico;
 import co.prueba.app.model.Venta;
+import co.prueba.app.repository.ClienteRepository;
 import co.prueba.app.repository.DetalleVentaRepository;
+import co.prueba.app.repository.ProductoRepository;
 import co.prueba.app.repository.VentaRepository;
 
 @RestController
@@ -27,11 +31,31 @@ public class VentaController {
 
 	private VentaRepository ventaRepository;
 	private DetalleVentaRepository detalleVentaRepository;
+	private ClienteRepository clienteRepository;
+	private ProductoRepository productoRepository;
 
 	@Autowired
-	public VentaController(VentaRepository ventaRepository, DetalleVentaRepository detalleVentaRepository) {
+	public VentaController(VentaRepository ventaRepository, DetalleVentaRepository detalleVentaRepository,
+			ClienteRepository clienteRepository, ProductoRepository productoRepository) {
+		super();
 		this.ventaRepository = ventaRepository;
 		this.detalleVentaRepository = detalleVentaRepository;
+		this.clienteRepository = clienteRepository;
+		this.productoRepository = productoRepository;
+	}
+
+	private ResponseEntity<Object> prepareRegistrar(Venta venta) {
+		if (!clienteRepository.existsById(venta.getIdCliente().getIdCliente())) {
+			return new ResponseEntity<Object>(new ErrorGenerico("200", "No se encontro el cliente especificado", "ER-VEN-12", null)
+					,HttpStatus.CREATED);
+		}
+		for (DetalleVenta item : venta.getDetalleVenta()) {
+			if (!productoRepository.existsById(item.getIdProducto().getIdProducto())) {
+				return new ResponseEntity<Object>(new ErrorGenerico("200", "No se encontro el Producto con el id: " + item.getIdProducto().getIdProducto(), "ER-VEN-12", null)
+						,HttpStatus.CREATED);
+			}
+		}
+		return null;
 	}
 
 	// Creacion
@@ -39,21 +63,25 @@ public class VentaController {
 			"/r" }, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> registrar(@RequestBody Venta venta) {
 		try {
-			venta.setFecha(new Date());// retirar si se requiere que sea una fecha distinta a la actual
-			Venta ventaTemp = new Venta();
-			ventaTemp.setDetalleVenta(venta.getDetalleVenta());
-			venta.setDetalleVenta(null);
-			ventaRepository.saveAndFlush(venta);
-			venta.setDetalleVenta(ventaTemp.getDetalleVenta());
-			venta.getDetalleVenta().forEach(t -> t.setIdVenta(venta));
-			detalleVentaRepository.saveAll(venta.getDetalleVenta());
-			
+			ResponseEntity<Object> responseTemp = prepareRegistrar(venta);
+			if (responseTemp == null) {
+				venta.setFecha(new Date());// retirar si se requiere que sea una fecha distinta a la actual
+				Venta ventaTemp = new Venta();
+				ventaTemp.setDetalleVenta(venta.getDetalleVenta());
+				venta.setDetalleVenta(null);
+				ventaRepository.saveAndFlush(venta);
+				venta.setDetalleVenta(ventaTemp.getDetalleVenta());
+				venta.getDetalleVenta().forEach(t -> t.setIdVenta(venta));
+				detalleVentaRepository.saveAll(venta.getDetalleVenta());
+				return new ResponseEntity<Object>(new CompletadoGenerico("200", "OK"), HttpStatus.CREATED);
+			} else {// retorna el pocible error especifico//si no existen los registros necesarios
+				return responseTemp;
+			}
 		} catch (Exception e) {
-			ErrorGenerico erG = new ErrorGenerico("200", "Error al guardar venta", "ER-VEN-01", e.getMessage());
+			ErrorGenerico erG = new ErrorGenerico("200", "Error al guardar venta", "ER-VEN-10", e.getMessage());
 			ManejadorErrores.logError(erG);
 			return new ResponseEntity<Object>(erG, HttpStatus.OK);
 		}
-		return new ResponseEntity<Object>("OK", HttpStatus.CREATED);
 	}
 
 	// Consulta Por id
@@ -64,10 +92,11 @@ public class VentaController {
 				Venta venta = ventaRepository.findById(id).get();
 				return new ResponseEntity<Object>(venta, HttpStatus.OK);
 			} else {
-				return new ResponseEntity<Object>("No Encontrado el venta de id: " + id, HttpStatus.OK);
+				ErrorGenerico erG = new ErrorGenerico("200", "No Encontrado el venta de id: ", "ER-VEN-03", null);
+				return new ResponseEntity<Object>(erG, HttpStatus.OK);
 			}
 		} catch (Exception e) {
-			ErrorGenerico erG = new ErrorGenerico("200", "Error al consultar venta de id" + id, "ER-VEN-02",
+			ErrorGenerico erG = new ErrorGenerico("200", "Error al consultar venta de id: " + id, "ER-VEN-02",
 					e.getMessage());
 			ManejadorErrores.logError(erG);
 			return new ResponseEntity<Object>(erG, HttpStatus.OK);

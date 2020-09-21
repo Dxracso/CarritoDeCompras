@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
 import co.prueba.app.ManejadorErrores;
+import co.prueba.app.model.CompletadoGenerico;
 import co.prueba.app.model.ErrorGenerico;
 import co.prueba.app.model.Producto;
 import co.prueba.app.repository.ProductoRepository;
 
 @RestController
 @RequestMapping("/productos")
-public class ProductoController  {
+public class ProductoController {
 
 	private ProductoRepository productoRepository;
 
@@ -44,11 +44,12 @@ public class ProductoController  {
 			ManejadorErrores.logError(erG);
 			return new ResponseEntity<Object>(erG, HttpStatus.OK);
 		}
-		return new ResponseEntity<Object>("OK", HttpStatus.CREATED);
+		return new ResponseEntity<Object>(new CompletadoGenerico("200", "OK"), HttpStatus.CREATED);
 	}
 
 	// Actualizacion por id
-	@PutMapping(value = { "/update/{id}","/actualizar/{id}", "/a/{id}" }, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@PutMapping(value = { "/update/{id}", "/actualizar/{id}",
+			"/a/{id}" }, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> actualizar(@RequestBody Producto producto, @PathVariable Long id) {
 		try {
 			if (productoRepository.existsById(id)) {
@@ -56,9 +57,10 @@ public class ProductoController  {
 				updateProd.setNombre(producto.getNombre());
 				updateProd.setPrecio(producto.getPrecio());
 				productoRepository.save(updateProd);
-				return new ResponseEntity<Object>("OK", HttpStatus.OK);
+				return new ResponseEntity<Object>(new CompletadoGenerico("200", "OK"), HttpStatus.CREATED);
 			} else {
-				return new ResponseEntity<Object>("No Encontrado el producto de id: " + id, HttpStatus.OK);
+				return new ResponseEntity<Object>(
+						new CompletadoGenerico("200", "No Encontrado el producto de id: " + id), HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			ErrorGenerico erG = new ErrorGenerico("200", "Error al guardar Producto", "ER-PRO-02", e.getMessage());
@@ -76,10 +78,11 @@ public class ProductoController  {
 				Producto producto = productoRepository.findById(id).get();
 				return new ResponseEntity<Object>(producto, HttpStatus.OK);
 			} else {
-				return new ResponseEntity<Object>("No Encontrado el producto de id: " + id, HttpStatus.OK);
+				return new ResponseEntity<Object>(
+						new CompletadoGenerico("200", "No Encontrado el producto de id: " + id), HttpStatus.OK);
 			}
 		} catch (Exception e) {
-			ErrorGenerico erG = new ErrorGenerico("200", "Error al consultar producto de id" + id, "ER-PRO-03",
+			ErrorGenerico erG = new ErrorGenerico("200", "Error al consultar producto de id: " + id, "ER-PRO-03",
 					e.getMessage());
 			ManejadorErrores.logError(erG);
 			return new ResponseEntity<Object>(erG, HttpStatus.OK);
@@ -90,7 +93,7 @@ public class ProductoController  {
 	@GetMapping({ "/", "" })
 	public ResponseEntity<Object> listarProductos() {
 		try {
-			List<Producto> productos =productoRepository.findAll();
+			List<Producto> productos = productoRepository.findAll();
 			return new ResponseEntity<Object>(productos, HttpStatus.OK);
 
 		} catch (Exception e) {
@@ -109,7 +112,9 @@ public class ProductoController  {
 				return new ResponseEntity<Object>("Borrado el id: " + id, HttpStatus.OK);
 			} else {
 				return new ResponseEntity<Object>(
-						"No Encontrado el consultar el producto de id: " + id + " No se a borrado nada", HttpStatus.OK);
+						new CompletadoGenerico("200",
+								"No Encontrado el consultar el producto de id: " + id + " No se a borrado nada"),
+						HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			ErrorGenerico erG = new ErrorGenerico("200", "Error al borrar Producto", "ER-PRO-05", e.getMessage());

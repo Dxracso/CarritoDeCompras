@@ -12,6 +12,7 @@ import org.springframework.http.MediaType;
 
 import co.prueba.app.ManejadorErrores;
 import co.prueba.app.model.Cliente;
+import co.prueba.app.model.CompletadoGenerico;
 import co.prueba.app.model.ErrorGenerico;
 import co.prueba.app.repository.ClienteRepository;
 
@@ -35,7 +36,7 @@ public class ClienteController {
 			ManejadorErrores.logError(erG);
 			return new ResponseEntity<Object>(erG,HttpStatus.OK);
 		}
-		return new ResponseEntity<Object>("OK",HttpStatus.CREATED);
+		return new ResponseEntity<Object>(new CompletadoGenerico("200", "OK"),HttpStatus.CREATED);
 	}
 
 }

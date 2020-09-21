@@ -3,7 +3,6 @@ package co.prueba.app;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import co.prueba.app.controller.ClienteController;
 import co.prueba.app.model.Cliente;
 
 @SpringBootTest
