@@ -1,0 +1,11 @@
+Request POST http://localhost:8080/clientes/registrar
+{
+    "nombre": "Oscar",
+    "apellido": "Hernandez",
+    "dni": "12345567890",
+    "telefono": "3138950674",
+    "email": "Ooscar1995@gmail.com"
+}
+
+Response
+OK

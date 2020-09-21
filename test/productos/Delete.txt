@@ -1,0 +1,4 @@
+Request Delete http://localhost:8080/productos/delete/1
+
+RESPONSE
+Borrado el id: 1

@@ -1,0 +1,222 @@
+{
+	"info": {
+		"_postman_id": "7a53184c-a28a-4ab0-8b26-643a55388040",
+		"name": "Prueba tecnica",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/clientes/registrar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Oscar\",\r\n    \"apellido\": \"Hernandez\",\r\n    \"dni\": \"12345567890\",\r\n    \"telefono\": \"3138950674\",\r\n    \"email\": \"Ooscar1995@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/clientes/registrar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"clientes",
+						"registrar"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "Oscar",
+							"disabled": true
+						},
+						{
+							"key": "apellido",
+							"value": "Hernandez",
+							"disabled": true
+						},
+						{
+							"key": "dni",
+							"value": "12345567890",
+							"disabled": true
+						},
+						{
+							"key": "telefono",
+							"value": "3138950674",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "ooscar1995@gmail.com",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Creacion de cliente"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/productos/registro",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Tablet 15 pulgadas\",\r\n    \"precio\":\"3.1416\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/productos/registro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"productos",
+						"registro"
+					]
+				},
+				"description": "Creacion simple"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/productos/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/productos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"productos",
+						"1"
+					]
+				},
+				"description": "Find 1"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/update/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Tablet 20 pulgadas\",\r\n    \"precio\":\"3.1416\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/productos/update/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"productos",
+						"update",
+						"1"
+					]
+				},
+				"description": "update 1"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/productos/delete/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/productos/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"productos",
+						"delete",
+						"1"
+					]
+				},
+				"description": "delete 1"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/ventas/registrar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idCliente\": 1,\r\n    \"detalleVenta\": [\r\n        {\r\n            \"idProducto\":1\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ventas/registrar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ventas",
+						"registrar"
+					]
+				},
+				"description": "Registar basico"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/ventas/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/ventas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ventas",
+						"1"
+					]
+				},
+				"description": "Consulta"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

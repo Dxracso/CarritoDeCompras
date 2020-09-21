@@ -1,0 +1,7 @@
+Request POST http://localhost:8080/productos/registro
+{
+    "nombre":"Tablet 15 pulgadas",
+    "precio":"3.1416"
+}
+RESPONSE
+OK

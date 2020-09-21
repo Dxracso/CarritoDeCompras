@@ -1,0 +1,9 @@
+Request Get
+http://localhost:8080/productos/1
+
+Response
+{
+    "idProducto": 1,
+    "nombre": "Tablet 15 pulgadas",
+    "precio": 3.1416
+}

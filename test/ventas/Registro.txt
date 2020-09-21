@@ -1,0 +1,11 @@
+Request POST http://localhost:8080/ventas/registrar
+{
+    "idCliente": 1,
+    "detalleVenta": [
+        {
+            "idProducto":1
+        }
+    ]
+}
+RESPONSE
+OK

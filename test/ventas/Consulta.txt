@@ -1,0 +1,28 @@
+Request Get
+http://localhost:8080/ventas/1
+http://localhost:8080/ventas
+
+Response
+{
+    "idVenta": 1,
+    "idCliente": {
+        "idCliente": 1,
+        "nombre": "Oscar",
+        "apellido": "Hernandez",
+        "dni": "12345567890",
+        "telefono": "3138950674",
+        "email": "Ooscar1995@gmail.com"
+    },
+    "fecha": "2020-09-21T00:57:36.747+00:00",
+    "detalleVenta": [
+        {
+            "idDetalleVenta": 1,
+            "idVenta": null,
+            "idProducto": {
+                "idProducto": 1,
+                "nombre": "Tablet 15 pulgadas",
+                "precio": 3.1416
+            }
+        }
+    ]
+}
