@@ -3,7 +3,7 @@ package co.prueba.app;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import co.prueba.app.model.ErrorGenerico;
+import co.prueba.app.model.dto.ErrorGenerico;
 
 public class ManejadorErrores {
 	private static final Logger log = LoggerFactory.getLogger(ErrorGenerico.class);

@@ -17,9 +17,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
 import co.prueba.app.ManejadorErrores;
-import co.prueba.app.model.CompletadoGenerico;
-import co.prueba.app.model.ErrorGenerico;
 import co.prueba.app.model.Producto;
+import co.prueba.app.model.dto.CompletadoGenerico;
+import co.prueba.app.model.dto.ErrorGenerico;
 import co.prueba.app.repository.ProductoRepository;
 
 @RestController

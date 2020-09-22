@@ -9,7 +9,13 @@
 			"name": "http://localhost:8080/clientes/registrar",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"nombre\": \"Oscar\",\r\n    \"apellido\": \"Hernandez\",\r\n    \"dni\": \"12345567890\",\r\n    \"telefono\": \"3138950674\",\r\n    \"email\": \"Ooscar1995@gmail.com\"\r\n}",
@@ -66,7 +72,13 @@
 			"name": "http://localhost:8080/productos/registro",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"nombre\":\"Tablet 15 pulgadas\",\r\n    \"precio\":\"3.1416\"\r\n}",
@@ -96,7 +108,13 @@
 			"name": "http://localhost:8080/productos/1",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "http://localhost:8080/productos/1",
 					"protocol": "http",
@@ -117,7 +135,13 @@
 			"name": "http://localhost:8080/update/1",
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"nombre\":\"Tablet 20 pulgadas\",\r\n    \"precio\":\"3.1416\"\r\n}",
@@ -148,7 +172,13 @@
 			"name": "http://localhost:8080/productos/delete/1",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "http://localhost:8080/productos/delete/1",
 					"protocol": "http",
@@ -170,7 +200,13 @@
 			"name": "http://localhost:8080/ventas/registrar",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"idCliente\": 1,\r\n    \"detalleVenta\": [\r\n        {\r\n            \"idProducto\":1\r\n        }\r\n    ]\r\n}",
@@ -200,7 +236,13 @@
 			"name": "http://localhost:8080/ventas/1",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "http://localhost:8080/ventas/1",
 					"protocol": "http",
@@ -214,6 +256,52 @@
 					]
 				},
 				"description": "Consulta"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "user",
+							"value": "oscar",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "mipassword",
+							"type": "text"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user"
+					]
+				},
+				"description": "Login Token"
 			},
 			"response": []
 		}
