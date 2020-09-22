@@ -23,10 +23,11 @@ public class UserController {
 	private final String SECRET = "miLlaveSecreta";
 	private final String PREFIX = "miToken ";
 
-	@PostMapping(value = "user")
+	@PostMapping(value = "login")
 	public User login(@RequestParam("user") String username, @RequestParam("password") String pwd) {
 
-		String token = getJWTToken(username);
+		//TO DO validar desde una lista 
+		String token = getJWTToken(username);	
 		User user = new User();
 		user.setUsername(username);
 		user.setToken(token);

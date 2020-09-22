@@ -263,13 +263,7 @@
 			"name": "http://localhost:8080/user",
 			"request": {
 				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
-						"type": "text"
-					}
-				],
+				"header": [],
 				"body": {
 					"mode": "urlencoded",
 					"urlencoded": [
@@ -291,14 +285,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/user",
+					"raw": "http://localhost:8080/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"user"
+						"login"
 					]
 				},
 				"description": "Login Token"

@@ -26,7 +26,7 @@ public class PruebaTecnicaApplication {
 			http.csrf().disable()
 				.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 				.authorizeRequests()
-				.antMatchers(HttpMethod.POST, "/user").permitAll()
+				.antMatchers(HttpMethod.POST, "/login").permitAll()//permite entar a login si autenicacion
 				.anyRequest().authenticated();
 		}
 	}
