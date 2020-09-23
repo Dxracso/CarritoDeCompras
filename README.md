@@ -8,4 +8,7 @@ La base de datos Seleccionada es PostgresSQL y sus configuraciones se encuentran
 
 
 4)Respuesta Al problema planteado: Se puede mejorar la autenticación JWT mediante el uso de una base de datos o un servicio que sea proveedor de los usuarios registrados y no tenerlos en un archivo de texto como es el caso, en cuanto a la optimizacion se puede pensar en abandonar el modelo monolitico para el backend y implementar colas y/o balanceadores
+
+Se impementara la solucion con dockerHub usando 'docker pull dxracso/carritocompras' 
+
 Gracias por ver
