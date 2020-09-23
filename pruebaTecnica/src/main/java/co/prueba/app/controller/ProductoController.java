@@ -53,11 +53,11 @@ public class ProductoController {
 	public ResponseEntity<Object> actualizar(@RequestBody Producto producto, @PathVariable Long id) {
 		try {
 			if (productoRepository.existsById(id)) {
-				Producto updateProd = productoRepository.getOne(id);
+				Producto updateProd = productoRepository.findById(id).get();
 				updateProd.setNombre(producto.getNombre());
 				updateProd.setPrecio(producto.getPrecio());
 				productoRepository.save(updateProd);
-				return new ResponseEntity<Object>(new CompletadoGenerico("200", "OK"), HttpStatus.CREATED);
+				return new ResponseEntity<Object>(new CompletadoGenerico("200", "OK"), HttpStatus.OK);
 			} else {
 				ErrorGenerico erG = new ErrorGenerico("200", "No Encontrado el producto de id: " + id, "ER-PRO-06",
 						null);
