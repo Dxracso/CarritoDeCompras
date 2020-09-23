@@ -1,5 +1,0 @@
-[ERROR] 2020-09-23 09:41:19.332 [http-nio-8080-exec-5] VentaController - -Status: 200-Message: No Encontrado el venta de id: -Code: ER-VEN-03-BackendMessage: null
-[ERROR] 2020-09-23 09:41:44.172 [http-nio-8080-exec-6] VentaController - -Status: 200-Message: No se encontro el Producto con el id: 1-Code: ER-VEN-12-BackendMessage: null
-[ERROR] 2020-09-23 10:17:44.029 [http-nio-8080-exec-2] VentaController - -Status: 200-Message: No Encontrado el venta de id: 1-Code: ER-VEN-03-BackendMessage: null
-[ERROR] 2020-09-23 10:31:30.344 [http-nio-8080-exec-5] VentaController - -Status: 200-Message: No se encontro el Producto con el id: 2-Code: ER-VEN-12-BackendMessage: null
-[ERROR] 2020-09-23 10:56:29.130 [http-nio-8080-exec-2] VentaController - -Status: 200-Message: No Encontrado el venta de id: 1-Code: ER-VEN-03-BackendMessage: null
