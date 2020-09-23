@@ -69,7 +69,7 @@ public class LoginController {
 					+ username + " - ER_LGN_01", this.getClass());
 			return new ResponseEntity<Object>(new ErrorGenerico("200",
 					"Usuario y contraseña NO encontrados en el archivo de configuracion para usuario: " + username,
-					"ER_LGN_01", null), HttpStatus.OK);
+					"ER_LGN_01", null), HttpStatus.UNAUTHORIZED);
 		} else {
 			String token = getJWTToken(username);
 			User user = new User();

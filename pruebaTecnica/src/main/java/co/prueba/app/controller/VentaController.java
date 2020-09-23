@@ -26,6 +26,8 @@ import co.prueba.app.repository.ClienteRepository;
 import co.prueba.app.repository.DetalleVentaRepository;
 import co.prueba.app.repository.ProductoRepository;
 import co.prueba.app.repository.VentaRepository;
+import rx.Observable;
+import rx.Subscription;
 
 @RestController
 @RequestMapping("/ventas")
@@ -140,6 +142,16 @@ public class VentaController {
 			ManejadorErrores.logError(erG);
 			return new ResponseEntity<Object>(erG, HttpStatus.OK);
 		}
+	}
+
+	@GetMapping("venta/{idVenta}")
+	private Subscription getVentaDetalle(@PathVariable Long idVenta) {
+		return Observable.just(detalleVentaRepository.findAllByIdVenta_IdVenta(idVenta)).subscribe();
+	}
+
+	@GetMapping("cliente/{idCliente}")
+	private Subscription getVentaCliente(@PathVariable Long idCliente) {
+		return Observable.just(detalleVentaRepository.findAllByIdCliente_idCliente(idCliente)).subscribe();
 	}
 
 }
