@@ -44,7 +44,7 @@ public class ProductoController {
 			ManejadorErrores.logError(erG, this.getClass());
 			return new ResponseEntity<Object>(erG, HttpStatus.OK);
 		}
-		return new ResponseEntity<Object>(new CompletadoGenerico("200", "OK"), HttpStatus.CREATED);
+		return new ResponseEntity<Object>(new CompletadoGenerico("201", "OK"), HttpStatus.CREATED);
 	}
 
 	// Actualizacion por id

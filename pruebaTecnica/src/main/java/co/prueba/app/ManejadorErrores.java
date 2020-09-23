@@ -16,24 +16,24 @@ public class ManejadorErrores {
 				+ "\nBackendMessage: " + er.getBackendMessage());
 	}
 
-	public static void logError(ErrorGenerico er, Class classe) {
+	public static void logError(ErrorGenerico er, @SuppressWarnings("rawtypes") Class classe) {
 
 		Logger loggerGenerico = LoggerFactory.getLogger(classe);
 		loggerGenerico.error("-Status: " + er.getHttpStatus() + "-Message: " + er.getMessage() + "-Code: "
 				+ er.getCode() + "-BackendMessage: " + er.getBackendMessage());
 	}
 
-	public static void logWarning(String msg, Class classe) {
+	public static void logWarning(String msg, @SuppressWarnings("rawtypes") Class classe) {
 		Logger loggerGenerico = LoggerFactory.getLogger(classe);
 		loggerGenerico.warn("-Mensage: " + msg + " -TimeStamp: " + new Date().toString());
 	}
 
-	public static void logDebug(String msg, Class classe) {
+	public static void logDebug(String msg, @SuppressWarnings("rawtypes") Class classe) {
 		Logger loggerGenerico = LoggerFactory.getLogger(classe);
 		loggerGenerico.debug("-Mensage: " + msg + " -TimeStamp: " + new Date().toString());
 	}
 
-	public static void logInfo(String msg, Class classe) {
+	public static void logInfo(String msg, @SuppressWarnings("rawtypes") Class classe) {
 		Logger loggerGenerico = LoggerFactory.getLogger(classe);
 		loggerGenerico.info("-Mensage: " + msg + " -TimeStamp: " + new Date().toString());
 

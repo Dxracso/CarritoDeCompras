@@ -17,7 +17,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.jsonwebtoken.Jwts;
@@ -33,11 +33,20 @@ public class LoginController {
 	private final String SECRET = "miLlaveSecreta";
 	private final String PREFIX = "miToken ";
 
+//Si se quiere por params usar (@RequestParam("user") String username, @RequestParam("password") String pwd)
 	@SuppressWarnings("unchecked")
 	@PostMapping(value = "login")
-	public ResponseEntity<Object> login(@RequestParam("user") String username, @RequestParam("password") String pwd)
-			throws IOException, ParseException {
+	public ResponseEntity<Object> login(@RequestBody User userLogin) {
 
+		String username = "";
+		String pwd = "";
+
+		if (userLogin != null) {
+			username = userLogin.getUsername();
+			pwd = userLogin.getPwd();
+		}
+		
+		
 		JSONParser parser = new JSONParser();
 		List<User> usuarios = new ArrayList<>();
 

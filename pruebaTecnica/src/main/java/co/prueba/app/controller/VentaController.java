@@ -1,7 +1,9 @@
 package co.prueba.app.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -70,14 +72,14 @@ public class VentaController {
 			ResponseEntity<Object> responseTemp = prepareRegistrar(venta);
 			if (responseTemp == null) {
 				venta.setFecha(new Date());// retirar si se requiere que sea una fecha distinta a la actual
-				Venta ventaTemp = new Venta();
-				ventaTemp.setDetalleVenta(venta.getDetalleVenta());
-				venta.setDetalleVenta(null);
+				// List<DetalleVenta> detalles = venta.getDetalleVenta();
+				// venta.setDetalleVenta(null);
 				ventaRepository.saveAndFlush(venta);
-				venta.setDetalleVenta(ventaTemp.getDetalleVenta());
+				// venta.setDetalleVenta(ventaTemp.getDetalleVenta());
 				venta.getDetalleVenta().forEach(t -> t.setIdVenta(venta));
 				detalleVentaRepository.saveAll(venta.getDetalleVenta());
-				return new ResponseEntity<Object>(new CompletadoGenerico("200", "OK"), HttpStatus.CREATED);
+				detalleVentaRepository.flush();
+				return new ResponseEntity<Object>(new CompletadoGenerico("201", "OK"), HttpStatus.CREATED);
 			} else {// retorna el pocible error especifico//si no existen los registros necesarios
 				return responseTemp;
 			}
@@ -94,9 +96,20 @@ public class VentaController {
 		try {
 			if (ventaRepository.existsById(id)) {
 				Venta venta = ventaRepository.findById(id).get();
+				/*
+				 * Uso de Lambda para obtener detalles venta por ID_VENTA
+				 */
+				List<DetalleVenta> detalleVentas = detalleVentaRepository.findAll().stream()
+						.filter(dv -> dv.getIdVenta().getIdVenta().equals(id)).collect(Collectors.toList());
+
+				detalleVentas.forEach(d -> d.setIdVenta(null));// se nulea para evitar la Ciclicidad de la relacion
+																// detalle_venta
+				venta.setDetalleVenta(new ArrayList<>());
+				venta.getDetalleVenta().addAll(detalleVentas);
+
 				return new ResponseEntity<Object>(venta, HttpStatus.OK);
 			} else {
-				ErrorGenerico erG = new ErrorGenerico("200", "No Encontrado el venta de id: ", "ER-VEN-03", null);
+				ErrorGenerico erG = new ErrorGenerico("200", "No Encontrado el venta de id: " + id, "ER-VEN-03", null);
 				ManejadorErrores.logError(erG, this.getClass());
 				return new ResponseEntity<Object>(erG, HttpStatus.OK);
 			}
@@ -111,8 +124,15 @@ public class VentaController {
 	// Consulta de todos los items
 	@GetMapping({ "/", "" })
 	public ResponseEntity<Object> listarventas() {
-		try {
+		try {// uso de lamda para encontrar los detalle venta
 			List<Venta> ventas = ventaRepository.findAll();
+			ventas.forEach(venta -> {
+
+				venta.setDetalleVenta(detalleVentaRepository.findAll().stream()
+						.filter(detalleVenta -> detalleVenta.getIdVenta().getIdVenta().equals(venta.getIdVenta()))
+						.collect(Collectors.toList()));
+			});
+
 			return new ResponseEntity<Object>(ventas, HttpStatus.OK);
 
 		} catch (Exception e) {

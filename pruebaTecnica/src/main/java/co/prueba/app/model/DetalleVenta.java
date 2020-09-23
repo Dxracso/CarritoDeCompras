@@ -7,9 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
@@ -19,18 +17,16 @@ public class DetalleVenta implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idDetalleVenta;
-	@ManyToOne(cascade = CascadeType.REMOVE)
 	@XmlTransient
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	private Venta idVenta;
-	@JoinTable(name = "venta")
-	//@JoinColumn(name = "idProducto", nullable = false)
 	@ManyToOne(cascade = CascadeType.REMOVE)
 	private Producto idProducto;
+	
 
 	public DetalleVenta() {
 		super();
 	}
-	
 
 	public DetalleVenta(Venta idVenta, Producto idProducto) {
 		super();
