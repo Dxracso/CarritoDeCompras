@@ -13,14 +13,15 @@ public class ManejadorErrores {
 
 	public static void logError(ErrorGenerico er) {
 		logger.error("Status: " + er.getHttpStatus() + "\nMessage: " + er.getMessage() + "\nCode: " + er.getCode()
-				+ "\nBackendMessage: " + er.getBackendMessage());
+				+ "\nBackendMessage: " + er.getBackendMessage() + " -TimeStamp: " + new Date().toString());
 	}
 
 	public static void logError(ErrorGenerico er, @SuppressWarnings("rawtypes") Class classe) {
 
 		Logger loggerGenerico = LoggerFactory.getLogger(classe);
-		loggerGenerico.error("-Status: " + er.getHttpStatus() + "-Message: " + er.getMessage() + "-Code: "
-				+ er.getCode() + "-BackendMessage: " + er.getBackendMessage());
+		loggerGenerico
+				.error("-Status: " + er.getHttpStatus() + "-Message: " + er.getMessage() + "-Code: " + er.getCode()
+						+ "-BackendMessage: " + er.getBackendMessage() + " -TimeStamp: " + new Date().toString());
 	}
 
 	public static void logWarning(String msg, @SuppressWarnings("rawtypes") Class classe) {
