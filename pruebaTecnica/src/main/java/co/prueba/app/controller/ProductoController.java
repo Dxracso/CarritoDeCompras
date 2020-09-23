@@ -41,7 +41,7 @@ public class ProductoController {
 			productoRepository.save(producto);
 		} catch (Exception e) {
 			ErrorGenerico erG = new ErrorGenerico("200", "Error al guardar Producto", "ER-PRO-01", e.getMessage());
-			ManejadorErrores.logError(erG);
+			ManejadorErrores.logError(erG, this.getClass());
 			return new ResponseEntity<Object>(erG, HttpStatus.OK);
 		}
 		return new ResponseEntity<Object>(new CompletadoGenerico("200", "OK"), HttpStatus.CREATED);
@@ -59,12 +59,15 @@ public class ProductoController {
 				productoRepository.save(updateProd);
 				return new ResponseEntity<Object>(new CompletadoGenerico("200", "OK"), HttpStatus.CREATED);
 			} else {
-				return new ResponseEntity<Object>(
-						new CompletadoGenerico("200", "No Encontrado el producto de id: " + id), HttpStatus.OK);
+				ErrorGenerico erG = new ErrorGenerico("200", "No Encontrado el producto de id: " + id, "ER-PRO-06",
+						null);
+				ManejadorErrores.logError(erG, this.getClass());
+
+				return new ResponseEntity<Object>(erG, HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			ErrorGenerico erG = new ErrorGenerico("200", "Error al guardar Producto", "ER-PRO-02", e.getMessage());
-			ManejadorErrores.logError(erG);
+			ManejadorErrores.logError(erG, this.getClass());
 			return new ResponseEntity<Object>(erG, HttpStatus.OK);
 		}
 
@@ -78,13 +81,15 @@ public class ProductoController {
 				Producto producto = productoRepository.findById(id).get();
 				return new ResponseEntity<Object>(producto, HttpStatus.OK);
 			} else {
-				return new ResponseEntity<Object>(
-						new CompletadoGenerico("200", "No Encontrado el producto de id: " + id), HttpStatus.OK);
+				ErrorGenerico erG = new ErrorGenerico("200", "No Encontrado el producto de id: " + id, "ER-PRO-06",
+						null);
+				ManejadorErrores.logError(erG, this.getClass());
+				return new ResponseEntity<Object>(erG, HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			ErrorGenerico erG = new ErrorGenerico("200", "Error al consultar producto de id: " + id, "ER-PRO-03",
 					e.getMessage());
-			ManejadorErrores.logError(erG);
+			ManejadorErrores.logError(erG, this.getClass());
 			return new ResponseEntity<Object>(erG, HttpStatus.OK);
 		}
 	}
@@ -98,7 +103,7 @@ public class ProductoController {
 
 		} catch (Exception e) {
 			ErrorGenerico erG = new ErrorGenerico("200", "Error al listar productos", "ER-PRO-04", e.getMessage());
-			ManejadorErrores.logError(erG);
+			ManejadorErrores.logError(erG, this.getClass());
 			return new ResponseEntity<Object>(erG, HttpStatus.OK);
 		}
 	}
@@ -110,15 +115,17 @@ public class ProductoController {
 			if (productoRepository.existsById(id)) {
 				productoRepository.deleteById(id);
 				return new ResponseEntity<Object>("Borrado el id: " + id, HttpStatus.OK);
+
 			} else {
-				return new ResponseEntity<Object>(
-						new CompletadoGenerico("200",
-								"No Encontrado el consultar el producto de id: " + id + " No se a borrado nada"),
-						HttpStatus.OK);
+				ErrorGenerico erG = new ErrorGenerico("200",
+						"No Encontrado el consultar el producto de id: " + id + " No se a borrado nada", "ER-PRO-06",
+						null);
+				ManejadorErrores.logError(erG, this.getClass());
+				return new ResponseEntity<Object>(erG, HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			ErrorGenerico erG = new ErrorGenerico("200", "Error al borrar Producto", "ER-PRO-05", e.getMessage());
-			ManejadorErrores.logError(erG);
+			ManejadorErrores.logError(erG, this.getClass());
 			return new ResponseEntity<Object>(erG, HttpStatus.OK);
 		}
 	}

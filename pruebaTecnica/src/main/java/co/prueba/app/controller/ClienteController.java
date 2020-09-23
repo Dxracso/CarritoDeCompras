@@ -1,6 +1,5 @@
 package co.prueba.app.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,16 +26,17 @@ public class ClienteController {
 		this.clienteRepository = clienteRepository;
 	}
 
-	@PostMapping(value = {"/registro","/registrar","/R"},consumes = MediaType.APPLICATION_JSON_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = { "/registro", "/registrar",
+			"/R" }, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Object> registrar(@RequestBody Cliente cliente) {
 		try {
 			clienteRepository.save(cliente);
 		} catch (Exception e) {
-			ErrorGenerico erG=new ErrorGenerico("200","Error al guardar Cliente","ER-CLI-01",e.getMessage());
-			ManejadorErrores.logError(erG);
-			return new ResponseEntity<Object>(erG,HttpStatus.OK);
+			ErrorGenerico erG = new ErrorGenerico("200", "Error al guardar Cliente", "ER-CLI-01", e.getMessage());
+			ManejadorErrores.logError(erG, this.getClass());//LOG
+			return new ResponseEntity<Object>(erG, HttpStatus.OK);
 		}
-		return new ResponseEntity<Object>(new CompletadoGenerico("200", "OK"),HttpStatus.CREATED);
+		return new ResponseEntity<Object>(new CompletadoGenerico("200", "OK"), HttpStatus.CREATED);
 	}
 
 }

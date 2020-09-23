@@ -46,13 +46,17 @@ public class VentaController {
 
 	private ResponseEntity<Object> prepareRegistrar(Venta venta) {
 		if (!clienteRepository.existsById(venta.getIdCliente().getIdCliente())) {
-			return new ResponseEntity<Object>(new ErrorGenerico("200", "No se encontro el cliente especificado", "ER-VEN-12", null)
-					,HttpStatus.CREATED);
+			ErrorGenerico erG = new ErrorGenerico("200", "No se encontro el cliente especificado", "ER-VEN-12", null);
+			ManejadorErrores.logError(erG, this.getClass());
+			return new ResponseEntity<Object>(erG, HttpStatus.CREATED);
 		}
 		for (DetalleVenta item : venta.getDetalleVenta()) {
 			if (!productoRepository.existsById(item.getIdProducto().getIdProducto())) {
-				return new ResponseEntity<Object>(new ErrorGenerico("200", "No se encontro el Producto con el id: " + item.getIdProducto().getIdProducto(), "ER-VEN-12", null)
-						,HttpStatus.CREATED);
+				ErrorGenerico erG = new ErrorGenerico("200",
+						"No se encontro el Producto con el id: " + item.getIdProducto().getIdProducto(), "ER-VEN-12",
+						null);
+				ManejadorErrores.logError(erG, this.getClass());
+				return new ResponseEntity<Object>(erG, HttpStatus.CREATED);
 			}
 		}
 		return null;
@@ -93,6 +97,7 @@ public class VentaController {
 				return new ResponseEntity<Object>(venta, HttpStatus.OK);
 			} else {
 				ErrorGenerico erG = new ErrorGenerico("200", "No Encontrado el venta de id: ", "ER-VEN-03", null);
+				ManejadorErrores.logError(erG, this.getClass());
 				return new ResponseEntity<Object>(erG, HttpStatus.OK);
 			}
 		} catch (Exception e) {

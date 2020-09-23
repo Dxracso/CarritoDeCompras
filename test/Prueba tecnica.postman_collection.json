@@ -6,261 +6,279 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:8080/clientes/registrar",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Oscar\",\r\n    \"apellido\": \"Hernandez\",\r\n    \"dni\": \"12345567890\",\r\n    \"telefono\": \"3138950674\",\r\n    \"email\": \"Ooscar1995@gmail.com\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/clientes/registrar",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"clientes",
-						"registrar"
-					],
-					"query": [
-						{
-							"key": "nombre",
-							"value": "Oscar",
-							"disabled": true
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "http://localhost:8080/clientes/registrar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Oscar\",\r\n    \"apellido\": \"Hernandez\",\r\n    \"dni\": \"12345567890\",\r\n    \"telefono\": \"3138950674\",\r\n    \"email\": \"Ooscar1995@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "apellido",
-							"value": "Hernandez",
-							"disabled": true
+						"url": {
+							"raw": "http://localhost:8080/clientes/registrar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"clientes",
+								"registrar"
+							],
+							"query": [
+								{
+									"key": "nombre",
+									"value": "Oscar",
+									"disabled": true
+								},
+								{
+									"key": "apellido",
+									"value": "Hernandez",
+									"disabled": true
+								},
+								{
+									"key": "dni",
+									"value": "12345567890",
+									"disabled": true
+								},
+								{
+									"key": "telefono",
+									"value": "3138950674",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "ooscar1995@gmail.com",
+									"disabled": true
+								}
+							]
 						},
-						{
-							"key": "dni",
-							"value": "12345567890",
-							"disabled": true
+						"description": "Creacion de cliente"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Producto",
+			"item": [
+				{
+					"name": "http://localhost:8080/productos/registro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Tablet 15 pulgadas\",\r\n    \"precio\":\"3.1416\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "telefono",
-							"value": "3138950674",
-							"disabled": true
+						"url": {
+							"raw": "http://localhost:8080/productos/registro",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productos",
+								"registro"
+							]
 						},
-						{
-							"key": "email",
-							"value": "ooscar1995@gmail.com",
-							"disabled": true
-						}
-					]
+						"description": "Creacion simple"
+					},
+					"response": []
 				},
-				"description": "Creacion de cliente"
-			},
-			"response": []
+				{
+					"name": "http://localhost:8080/productos/1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgxMjUzNywiZXhwIjoxNjAwODEyODM3fQ.yctnWGLFatuVRzDWO8cf8XucyLstEHcNv5lynk61GbidX57_DpxcarK5mHV0xTUWKtCNj9rZyp4olK7YnD9j1Q",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/productos/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productos",
+								"1"
+							]
+						},
+						"description": "Find 1"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/productos/update/1",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Tablet 20 pulgadas\",\r\n    \"precio\":\"3.1416\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/productos/update/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productos",
+								"update",
+								"1"
+							]
+						},
+						"description": "update 1"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/productos/delete/1",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/productos/delete/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productos",
+								"delete",
+								"1"
+							]
+						},
+						"description": "delete 1"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "http://localhost:8080/productos/registro",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\":\"Tablet 15 pulgadas\",\r\n    \"precio\":\"3.1416\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+			"name": "Ventas",
+			"item": [
+				{
+					"name": "http://localhost:8080/ventas/registrar",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idCliente\": 1,\r\n    \"detalleVenta\": [\r\n        {\r\n            \"idProducto\":1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ventas/registrar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ventas",
+								"registrar"
+							]
+						},
+						"description": "Registar basico"
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/productos/registro",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"productos",
-						"registro"
-					]
-				},
-				"description": "Creacion simple"
-			},
-			"response": []
+				{
+					"name": "http://localhost:8080/ventas/1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/ventas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ventas",
+								"1"
+							]
+						},
+						"description": "Consulta"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "http://localhost:8080/productos/1",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8080/productos/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"productos",
-						"1"
-					]
-				},
-				"description": "Find 1"
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/update/1",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\":\"Tablet 20 pulgadas\",\r\n    \"precio\":\"3.1416\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/productos/update/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"productos",
-						"update",
-						"1"
-					]
-				},
-				"description": "update 1"
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/productos/delete/1",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8080/productos/delete/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"productos",
-						"delete",
-						"1"
-					]
-				},
-				"description": "delete 1"
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/ventas/registrar",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"idCliente\": 1,\r\n    \"detalleVenta\": [\r\n        {\r\n            \"idProducto\":1\r\n        }\r\n    ]\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/ventas/registrar",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"ventas",
-						"registrar"
-					]
-				},
-				"description": "Registar basico"
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/ventas/1",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "miToken eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJJREpXVCIsInN1YiI6Im9zY2FyIiwiYXV0aG9yaXRpZXMiOlsiUk9MRV9VU0VSIl0sImlhdCI6MTYwMDgwNDk1NiwiZXhwIjoxNjAwODA1MjU2fQ.RXutYOVSWj7wBWGAUEJO4aI0qdDuZuZ5Q39xgBkC7SuE4gkzbJmFJ_6-Mgto-HNXTtyW15NZh5a0715YEbC1YQ",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8080/ventas/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"ventas",
-						"1"
-					]
-				},
-				"description": "Consulta"
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/user",
+			"name": "http://localhost:8080/login",
 			"request": {
 				"method": "POST",
 				"header": [],

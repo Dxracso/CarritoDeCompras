@@ -22,13 +22,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import co.prueba.app.ManejadorErrores;
 import co.prueba.app.model.dto.ErrorGenerico;
 import co.prueba.app.model.dto.User;
 
 @RestController
 public class LoginController {
 
-	private final long TIEMPO_TOKEN = 300000;// tiempo de vida del token en milis// valido por 5 minutos
+	private final long TIEMPO_TOKEN = 1800000;// tiempo de vida del token en milis// valido por 30 minutos
 	private final String SECRET = "miLlaveSecreta";
 	private final String PREFIX = "miToken ";
 
@@ -44,25 +45,28 @@ public class LoginController {
 
 			InputStream reader = getClass().getResourceAsStream("/static/usuarios.json");
 			JSONArray jsonArray = (JSONArray) parser.parse(new InputStreamReader(reader));
-			System.out.println(jsonArray);
 
 			jsonArray.forEach(usr -> usuarios.add(parseUserObject((JSONObject) usr)));
-			System.out.println(usuarios.size());
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			ManejadorErrores.logError(new ErrorGenerico("200", e.getLocalizedMessage() + " -Username: " + username,
+					"ER_LGN_02", e.getMessage()), this.getClass());
 		} catch (ParseException e) {
-			e.printStackTrace();
+			ManejadorErrores.logError(new ErrorGenerico("200", e.getLocalizedMessage() + " -Username: " + username,
+					"ER_LGN_03", e.getMessage()), this.getClass());
 		}
 		if (buscarUsuario(username, pwd, usuarios).isEmpty()) {
+			ManejadorErrores.logInfo("Usuario y contraseña NO encontrados en el archivo de configuracion para usuario: "
+					+ username + " - ER_LGN_01", this.getClass());
 			return new ResponseEntity<Object>(new ErrorGenerico("200",
-					"Usuario o contraseña no encontrados en el archivo de configuracion", "ER_LGN_01", null),
-					HttpStatus.OK);
+					"Usuario y contraseña NO encontrados en el archivo de configuracion para usuario: " + username,
+					"ER_LGN_01", null), HttpStatus.OK);
 		} else {
 			String token = getJWTToken(username);
 			User user = new User();
 			user.setUsername(username);
 			user.setToken(token);
+			ManejadorErrores.logDebug("Logueo exitoso -Username: " + username, this.getClass());
 			return new ResponseEntity<Object>(user, HttpStatus.OK);
 		}
 
