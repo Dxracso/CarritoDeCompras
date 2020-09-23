@@ -1,21 +1,22 @@
 package co.prueba.app.controller;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +30,7 @@ import co.prueba.app.model.dto.User;
 @RestController // para login
 public class UserController {
 
-	private final long TIEMPO_TOKEN = 300000;
+	private final long TIEMPO_TOKEN = 300000;//tiempo de vida del token en milis// valido por 5 minutos
 	private final String SECRET = "miLlaveSecreta";
 	private final String PREFIX = "miToken ";
 
@@ -38,16 +39,7 @@ public class UserController {
 	public User login(@RequestParam("user") String username, @RequestParam("password") String pwd)
 			throws IOException, ParseException {
 
-		JSONParser parser = new JSONParser();
-		Resource resource = new ClassPathResource("static/usuarios.json");
 
-		// TO DO validar desde una lista
-		if (!username.equals("oscar")) {
-			return null;
-		}
-		if (!pwd.equals("mipassword")) {
-			return null;
-		}
 		System.out.println("Se Logueo");
 		// TO DO validar desde una lista
 		String token = getJWTToken(username);
@@ -58,7 +50,7 @@ public class UserController {
 
 	}
 
-	private String getJWTToken(String username) {// valido por 5 minutos
+	private String getJWTToken(String username) {
 		List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
 
 		String token = Jwts.builder().setId("IDJWT").setSubject(username)

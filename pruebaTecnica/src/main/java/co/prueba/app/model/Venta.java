@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
 @Entity
 public class Venta implements Serializable {
 	private static final long serialVersionUID = 4845879058174609347L;
@@ -26,7 +25,6 @@ public class Venta implements Serializable {
 	private Date fecha;
 	@OneToMany(cascade = CascadeType.REMOVE)
 	private List<DetalleVenta> detalleVenta;
-	
 
 	public Venta() {
 		super();
@@ -69,7 +67,5 @@ public class Venta implements Serializable {
 	public void setDetalleVenta(List<DetalleVenta> detalleVenta) {
 		this.detalleVenta = detalleVenta;
 	}
-	
-	
 
 }
