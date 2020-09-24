@@ -16,3 +16,4 @@ Recordar que se debe de configurar la base de datos para que admita conecciones 
 Usar Java 8
 
 Gracias por ver
+Att Oscar Andres Hernandez Ariza
