@@ -9,6 +9,8 @@ La base de datos Seleccionada es PostgresSQL y sus configuraciones se encuentran
 Para implementar la solucion en Docker se debe de modificar la direccion de la base de datos en el archivo 'application.properties' y copiarlo a la raiz del proyecto
 ademas de ejecutar el Script 'dockerInstal.bat' el cual carga la configuracion de 'Dockerfile' y lanzara los servicios en el puerto 8080
 
+Recordar que se debe de configurar la base de datos para que admita conecciones externas para el contenedor de docker
+
 4)Respuesta Al problema planteado: Se puede mejorar la autenticación JWT mediante el uso de una base de datos o un servicio que sea proveedor de los usuarios registrados y no tenerlos en un archivo de texto como es el caso, en cuanto a la optimizacion se puede pensar en abandonar el modelo monolitico para el backend y implementar colas y/o balanceadores
 
 Usar Java 8
