@@ -31,7 +31,6 @@ public class LoginController {
 
 	private final long TIEMPO_TOKEN = 1800000;// tiempo de vida del token en milis// valido por 30 minutos
 	private final String SECRET = "miLlaveSecreta";
-	private final String PREFIX = "miToken ";
 
 //Si se quiere por params usar (@RequestParam("user") String username, @RequestParam("password") String pwd)
 	@SuppressWarnings("unchecked")
@@ -45,8 +44,7 @@ public class LoginController {
 			username = userLogin.getUsername();
 			pwd = userLogin.getPwd();
 		}
-		
-		
+
 		JSONParser parser = new JSONParser();
 		List<User> usuarios = new ArrayList<>();
 
@@ -107,7 +105,7 @@ public class LoginController {
 				.setExpiration(new Date(System.currentTimeMillis() + TIEMPO_TOKEN))
 				.signWith(SignatureAlgorithm.HS512, SECRET.getBytes()).compact();
 
-		return PREFIX + token;
+		return token;
 	}
 
 }
